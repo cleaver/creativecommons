@@ -283,7 +283,7 @@ function creativecommons_settings($form, &$form_state) {
     '#base_type' => 'textarea', 
     '#title' => t('Custom Message'),
     '#rows' => 10,
-    '#default_value' => $user_message['value'],
+    '#default_value' => isset($user_message['value']) ? $user_message['value'] : '',
     '#format' => isset($user_message['format']) ? $user_message['format'] : filter_default_format(),
     '#description' => t('Customize the message displayed to users when adding a license.  This message overrides both the main message and the public domain message when public domain is enabled'),
     '#process' => array('filter_process_format'), 
