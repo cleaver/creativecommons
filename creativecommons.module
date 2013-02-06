@@ -892,7 +892,7 @@ function creativecommons_license_sort($x, $y) {
 
   $order_x = array_key_exists($x, $order) ? $order[$x] : 10; 
   $order_y = array_key_exists($y, $order) ? $order[$y] : 10; 
-	
+  
   return $order_x - $order_y;
 
   //return $order[$x] - $order[$y];
@@ -1054,7 +1054,7 @@ function creativecommons_api_request($uri, $headers = array(), $method = 'GET', 
 /**
  * Retrieves CC API XML from cache, if available; otherwise, from API.
  *
- * $uri		  uri of file content on CC api site, beyond the interface root
+ * $uri     uri of file content on CC api site, beyond the interface root
  * $update  force cache update
  */
 function creativecommons_get_xml($uri, $update = FALSE) {
@@ -1878,14 +1878,14 @@ function creativecommons_link($type, $node = NULL, $teaser = FALSE) {
 function creativecommons_block_info() {
   $blocks['node_license'] = array(
     'info' => t('Creative Commons Node License'),
-    //'cache' => BLOCK_CACHE_PER_PAGE,
-    'cache' => TRUE,
+    'cache' => DRUPAL_CACHE_PER_PAGE,
     'weight' => -1,
     'enabled' => 0, 
   );
 
   $blocks['site_license'] = array(
     'info' => t('Creative Commons Site License'),
+    'cache' => DRUPAL_CACHE_GLOBAL,
     'weight' => -10,
     'enabled' => 0, 
   );
@@ -1974,7 +1974,7 @@ function creativecommons_node_form(&$form, $form_state) {
   else {
 
     // Creative Commons license description
-    $description = '<p>' . t('With a Creative Commons license, <em>you keep your	copyright</em> but allow people to <a href="@about-licenses-url">copy and distribute your work</a> provided they <a href="@attribution-wiki-url">give you credit</a> -- and only on the conditions you specify here. For those new to Creative Commons licensing, visit the website for <a href="@think-about-url">a list of things to think about</a>.', $description_args) . '</p>';
+    $description = '<p>' . t('With a Creative Commons license, <em>you keep your  copyright</em> but allow people to <a href="@about-licenses-url">copy and distribute your work</a> provided they <a href="@attribution-wiki-url">give you credit</a> -- and only on the conditions you specify here. For those new to Creative Commons licensing, visit the website for <a href="@think-about-url">a list of things to think about</a>.', $description_args) . '</p>';
 
     // Public Domain tools description
     $description .= '<p>' . t('If you want to offer your work with no conditions or you want to certify a work as public domain, choose one of the <a href="@public-domain-url">public domain tools</a>.', array('@public-domain-url' => 'http://creativecommons.org/publicdomain/')) . '</p>';
